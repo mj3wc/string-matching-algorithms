@@ -7,6 +7,6 @@ trivialMatching::trivialMatching() {
     cout << "Testing data set on trivial algorithm" << endl;
 }
 
-void trivialMatching::findMatches(){
+void trivialMatching::findMatches(string content, string find){
 
 }
