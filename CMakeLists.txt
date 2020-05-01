@@ -11,7 +11,7 @@ set (EXE_NAME StringMatching)
 #   set (input02 "train_target.csv")
 # etc....
 
-set (input01 "")
+set (input01 "text.txt")
 set (input02 "")
 set (input03 "")
 set (input04 "")
@@ -25,4 +25,4 @@ foreach(file IN LISTS input01 input02 input03 input04)
 endforeach()
 
 set(CMAKE_CXX_STANDARD 14)
-add_executable(${EXE_NAME} main.cpp)
+add_executable(${EXE_NAME} main.cpp trivialMatching.cpp trivialMatching.h)
