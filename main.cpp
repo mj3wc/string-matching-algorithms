@@ -23,7 +23,7 @@ bool checkOpen(string& fileName, ifstream& file){
 int main(){
 
     ifstream file;
-    string filename = "text.txtd";
+    string filename = "text.txt";
     file.open(filename);// set file name (** Change to arg **)
     bool open = false;
     int count = 0;
