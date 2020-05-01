@@ -6,12 +6,14 @@
 #define STRING_MATCHING_TRIVIALMATCHING_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class trivialMatching {
 public:
     trivialMatching();
     void findMatches(string, string);
+    bool checkRest(string, string, int&);
 
 };
 

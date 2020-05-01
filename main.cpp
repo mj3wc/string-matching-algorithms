@@ -44,6 +44,7 @@ int main(){
     content.assign( (istreambuf_iterator<char>(file) ),
                     (istreambuf_iterator<char>()    ) );
 
+    //string test = "bedfgjsi sjdt bet sjdof beef sjiof sdofbetssfid";
     string find = "bet"; //string you are searching for
 
     trivialMatching trivial; // new object
