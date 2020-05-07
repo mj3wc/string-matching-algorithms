@@ -50,7 +50,10 @@ int main(){
                     (istreambuf_iterator<char>()    ) );
     content.erase(remove(content.begin(), content.end(), '\n'), content.end());
     content.erase(remove(content.begin(), content.end(), ' '), content.end());
-  string find = "somethingrandom"; //string you are searching for //(complications, cocacola, respiratory, somethingrandom
+    string find;
+    cout << "Please enter a search" << endl;
+    cin >> find;
+    find.erase(remove(find.begin(), find.end(), ' '), find.end());
     cout << "Searching for : " << find << endl;
     auto start = high_resolution_clock::now(); //start time
     trivialMatching trivial(content, find); //trivial algorithm
