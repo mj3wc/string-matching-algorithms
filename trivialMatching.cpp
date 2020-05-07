@@ -5,16 +5,29 @@
 #include "trivialMatching.h"
 trivialMatching::trivialMatching() {
     cout << "Testing data set on trivial algorithm" << endl;
+    matches = 0;
+    txt = "";
+    pattern = "";
 }
 
-void trivialMatching::findMatches(string content, string find){
+trivialMatching::trivialMatching(string t, string p) {
+    cout << "Trivial algorithm" << endl;
+    matches =0;
+    txt = t;
+    pattern = p;
+    findMatches();
+    cout << matches << " matches found" << endl;
+}
+
+void trivialMatching::findMatches(){
     int position = 0;
     bool match = false;
-    while(position < content.length()) {
-        if (content[position] == find[0]) { //if first letter matches
-            match = checkRest(content, find, position);
+    while(position < txt.length()) {
+        if (txt[position] == pattern[0]) { //if first letter matches
+            match = checkRest(position);
             if(match){
-                cout << "Match found start : " << position - find.length() + 1<< endl;
+               // cout << "Match found start : " << position - pattern.length() + 1<< endl;
+               matches++;
             }
         } else {
             position++; //else look at next charachter
@@ -22,10 +35,10 @@ void trivialMatching::findMatches(string content, string find){
     }
 }
 
-bool trivialMatching::checkRest(string content, string find, int& position){  //checks if rest of string matches, updates position
-    for(int i = 1; i < find.length(); i++){
+bool trivialMatching::checkRest(int& position){  //checks if rest of string matches, updates position
+    for(int i = 1; i < pattern.length(); i++){
         position++; //increment position
-        if(content[position] != find[i]){
+        if(txt[position] != pattern[i]){
             return false; // if doesnt match exit loop and return false
         }
     }

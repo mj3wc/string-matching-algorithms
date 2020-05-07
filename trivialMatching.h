@@ -10,10 +10,15 @@
 using namespace std;
 
 class trivialMatching {
+private:
+    string txt;
+    string pattern;
+    int matches;
 public:
     trivialMatching();
-    void findMatches(string, string);
-    bool checkRest(string, string, int&);
+    trivialMatching(string,string);
+    void findMatches();
+    bool checkRest(int&);
 
 };
 

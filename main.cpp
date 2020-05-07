@@ -6,7 +6,12 @@
 #include <fstream>
 #include <string>
 #include "trivialMatching.h"
+#include "boyerMoore.h"
+#include "KMP.h"
+#include "algorithm"
+#include <chrono>
 
+using namespace std::chrono;
 using namespace std;
 //checks if file open, if not prompt for user to enter one and retry
 bool checkOpen(string& fileName, ifstream& file){
@@ -43,12 +48,34 @@ int main(){
     string content;
     content.assign( (istreambuf_iterator<char>(file) ),
                     (istreambuf_iterator<char>()    ) );
+    content.erase(remove(content.begin(), content.end(), '\n'), content.end());
+    content.erase(remove(content.begin(), content.end(), ' '), content.end());
+  string find = "somethingrandom"; //string you are searching for //(complications, cocacola, respiratory, somethingrandom
+    cout << "Searching for : " << find << endl;
+    auto start = high_resolution_clock::now(); //start time
+    trivialMatching trivial(content, find); //trivial algorithm
+    auto end = high_resolution_clock::now(); //send time
+    auto duration = duration_cast<nanoseconds>(end - start);
+    int seconds = duration.count();
+    cout << seconds << " microseconds" << endl;
 
-    //string test = "bedfgjsi sjdt bet sjdof beef sjiof sdofbetssfid";
-    string find = "bet"; //string you are searching for
+    start = high_resolution_clock::now();
+    boyerMoore BM(content, find); //boyerMoore algorithm
+    end = high_resolution_clock::now(); //send time
+     duration = duration_cast<microseconds>(end - start);
+     seconds = duration.count();
+    cout << seconds << " microseconds" << endl;
 
-    trivialMatching trivial; // new object
-    trivial.findMatches(content, find); // find matches method
+    start = high_resolution_clock::now();
+    KMP kmp(content, find); //Knuth Morris Pratt algorithm
+     end = high_resolution_clock::now(); //send time
+     duration = duration_cast<microseconds>(end - start);
+     seconds = duration.count();
+    cout << seconds << " microseconds" << endl;
+
+
+
+
 
 
 
